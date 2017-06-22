@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:8u131-jre
 
 ENV ZK_USER=zookeeper \
 ZK_DATA_DIR=/var/lib/zookeeper/data \
