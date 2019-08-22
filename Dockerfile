@@ -11,7 +11,7 @@ RUN set -x \
     && apt-get install -y wget netcat-openbsd \
 	&& wget -q "http://www.apache.org/dist/zookeeper/$ZK_DIST/$ZK_DIST.tar.gz" \
     && tar -xzf "$ZK_DIST.tar.gz" -C /opt \
-    && rm -r "$GNUPGHOME" "$ZK_DIST.tar.gz" \
+    && rm -r "$ZK_DIST.tar.gz" \
     && ln -s /opt/$ZK_DIST /opt/zookeeper \
     && rm -rf /opt/zookeeper/CHANGES.txt \
     /opt/zookeeper/README.txt \
