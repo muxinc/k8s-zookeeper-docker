@@ -8,7 +8,7 @@ ZK_LOG_DIR=/var/log/zookeeper
 ARG ZK_DIST=zookeeper-3.4.14
 RUN set -x \
     && apt-get update \
-    && apt-get install -y wget netcat-openbsd \
+    && apt-get install -y wget netcat \
 	&& wget -q "http://www.apache.org/dist/zookeeper/$ZK_DIST/$ZK_DIST.tar.gz" \
     && tar -xzf "$ZK_DIST.tar.gz" -C /opt \
     && rm -r "$ZK_DIST.tar.gz" \
