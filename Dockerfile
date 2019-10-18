@@ -10,6 +10,7 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y wget netcat \
 	&& wget -q "https://www.apache.org/dist/zookeeper/$ZK_DIST/apache-$ZK_DIST.tar.gz" \
+    && mv "apache-$ZK_DIST.tar.gz" "$ZK_DIST.tar.gz" \
     && tar -xzf "$ZK_DIST.tar.gz" -C /opt \
     && rm -r "$ZK_DIST.tar.gz" \
     && ln -s /opt/$ZK_DIST /opt/zookeeper \
