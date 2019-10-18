@@ -1,11 +1,11 @@
-FROM openjdk:8u181-jdk
+FROM openjdk:8u222-jdk
 
 ENV ZK_USER=zookeeper \
 ZK_DATA_DIR=/var/lib/zookeeper/data \
 ZK_DATA_LOG_DIR=/var/lib/zookeeper/log \
 ZK_LOG_DIR=/var/log/zookeeper
 
-ARG ZK_DIST=zookeeper-3.4.14
+ARG ZK_DIST=zookeeper-3.5.5
 RUN set -x \
     && apt-get update \
     && apt-get install -y wget netcat \
