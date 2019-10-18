@@ -9,7 +9,7 @@ ARG ZK_DIST=zookeeper-3.5.5
 RUN set -x \
     && apt-get update \
     && apt-get install -y wget netcat \
-	&& wget -q "http://www.apache.org/dist/zookeeper/$ZK_DIST/$ZK_DIST.tar.gz" \
+	&& wget -q "https://www.apache.org/dist/zookeeper/$ZK_DIST/apache-$ZK_DIST.tar.gz" \
     && tar -xzf "$ZK_DIST.tar.gz" -C /opt \
     && rm -r "$ZK_DIST.tar.gz" \
     && ln -s /opt/$ZK_DIST /opt/zookeeper \
