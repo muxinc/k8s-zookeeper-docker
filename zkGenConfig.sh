@@ -32,6 +32,8 @@ ZK_MAX_SESSION_TIMEOUT=${ZK_MAX_SESSION_TIMEOUT:- $((ZK_TICK_TIME*20))}
 ZK_SNAP_COUNT=${ZK_SNAP_COUNT:-100000}
 ZK_SNAP_RETAIN_COUNT=${ZK_SNAP_RETAIN_COUNT:-3}
 ZK_PURGE_INTERVAL=${ZK_PURGE_INTERVAL:-0}
+ZK_4LW_COMMANDS_WHITELIST=${ZK_4LW_COMMANDS_WHITELIST:-*}
+ZK_SNAPSHOT_TRUST_EMPTY=${ZK_SNAPSHOT_TRUST_EMPTY:-"false"}
 ID_FILE="$ZK_DATA_DIR/myid"
 ZK_CONFIG_FILE="$ZK_CONF_DIR/zoo.cfg"
 LOGGER_PROPS_FILE="$ZK_CONF_DIR/log4j.properties"
@@ -80,6 +82,9 @@ function validate_env() {
     echo "ZK_SNAP_COUNT=$ZK_SNAP_COUNT"
     echo "ZK_SNAP_RETAIN_COUNT=$ZK_SNAP_RETAIN_COUNT"
     echo "ZK_PURGE_INTERVAL=$ZK_PURGE_INTERVAL"
+    echo "ZK_4LW_COMMANDS_WHITELIST=$ZK_4LW_COMMANDS_WHITELIST"
+    echo "ZK_SNAPSHOT_TRUST_EMPTY=$ZK_SNAPSHOT_TRUST_EMPTY"
+
     echo "ENSEMBLE"
     print_servers
     echo "Environment validation successful"
@@ -101,6 +106,8 @@ function create_config() {
     echo "snapCount=$ZK_SNAP_COUNT" >> $ZK_CONFIG_FILE
     echo "autopurge.snapRetainCount=$ZK_SNAP_RETAIN_COUNT" >> $ZK_CONFIG_FILE
     echo "autopurge.purgeInterval=$ZK_PURGE_INTERVAL" >> $ZK_CONFIG_FILE
+    echo "4lw.commands.whitelist=$ZK_4LW_COMMANDS_WHITELIST" >>  $ZK_CONFIG_FILE
+    echo "snapshot.trust.empty=$ZK_SNAPSHOT_TRUST_EMPTY" >>  $ZK_CONFIG_FILE
 
     if [ $ZK_REPLICAS -gt 1 ]; then
     	print_servers >> $ZK_CONFIG_FILE
